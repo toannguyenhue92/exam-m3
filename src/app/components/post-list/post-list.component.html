@@ -1,0 +1,68 @@
+<div class="form-group row">
+  <div class="col-auto">
+    <button type="button" class="btn btn-outline-primary" routerLink='/create'>
+      Đăng tin
+    </button>
+  </div>
+  <div class="col-auto">
+    <input type="text" class="form-control" placeholder="Tìm theo mọi trường" [(ngModel)]="term">
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#searchDialog">
+      Tìm kiếm
+    </button>
+  </div>
+</div>
+<table class="table table-bordered table-striped mb-5">
+  <thead class="thead-dark">
+    <tr>
+      <th class="text-center">Tiêu đề</th>
+      <th class="text-center">Loại bài viết</th>
+      <th class="text-center">Danh mục</th>
+      <th class="text-center">Diện tích</th>
+      <th class="text-center">Giá</th>
+      <th class="text-center">Hướng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of posts | filter: term">
+      <td>{{p.title}}</td>
+      <td>{{p.postType}}</td>
+      <td>{{p.category}}</td>
+      <td>{{p.area}}</td>
+      <td>{{p.cost}}</td>
+      <td>{{p.productDirection}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Detail -->
+<div class="modal fade" id="searchDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-labelledby="newPostDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info" id="newPostDialogLabel">New post</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Diện tích:</label>
+            <div class="col-sm-8">
+              <select class="custom-select" (change)="areaChanged($event.target.value)">
+                <option value="0">Tất cả</option>
+                <option value="100">Dưới 100</option>
+                <option value="200">Dưới 200</option>
+                <option value="300">Dưới 300</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Quay lại</button>
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="findPost()">Tìm
+          kiếm</button>
+      </div>
+    </div>
+  </div>

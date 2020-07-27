@@ -1,0 +1,186 @@
+<div class="my-form">
+  <form [formGroup]="postCreateForm" (ngSubmit)="showConfirmDialog()">
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Danh mục:</label>
+      <div class="col-sm-8">
+        <select class="custom-select" formControlName="category">
+          <option value="Nhà đất">Nhà đất</option>
+          <option value="Căn hộ">Căn hộ</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Vùng miền:</label>
+      <div class="col-sm-8">
+        <select class="custom-select" formControlName="province">
+          <option value="Hà Nội">Hà Nội</option>
+          <option value="Đà Nẵng">Đà Nẵng</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Bạn là:</label>
+      <div class="col-sm-8">
+        <select class="custom-select" formControlName="org">
+          <option value="Cá nhân">Cá nhân</option>
+          <option value="Công ty">Công ty</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Bạn đăng tin:</label>
+      <div class="col-sm-8">
+        <select class="custom-select" formControlName="postType">
+          <option value="Cần bán">Cần bán</option>
+          <option value="Cần mua">Cần mua</option>
+          <option value="Cho thuê">Cho thuê</option>
+          <option value="Cần thuê">Cần thuê</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Tình trạng:</label>
+      <div class="col-sm-8">
+        <select class="custom-select" formControlName="productStatus">
+          <option value="Mới">Mới</option>
+          <option value="Đã sử dụng">Đã sử dụng</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Địa chỉ: (*)</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" formControlName="address">
+        <div class="text-danger mt-2" *ngIf="address.hasError('required') && address.touched">
+          Trường này là bắt buộc!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Diện tích: (*)</label>
+      <div class="col-sm-8">
+        <input type="number" class="form-control" formControlName="area">
+        <div class="text-danger mt-2" *ngIf="area.hasError('required') && area.touched">
+          Trường này là bắt buộc!
+        </div>
+        <div class="text-danger mt-2" *ngIf="area.hasError('min') && area.touched">
+          Diên tích nhỏ nhất là 20!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Hướng:</label>
+      <div class="col-sm-8">
+        <select class="custom-select" formControlName="productDirection">
+          <option value="Đông" selected>Đông</option>
+          <option value="Tây">Tây</option>
+          <option value="Nam">Nam</option>
+          <option value="Bắc">Bắc</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Tựa đề:(*)</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" formControlName="title">
+        <div class="text-danger mt-2" *ngIf="title.hasError('required') && title.touched">
+          Trường này là bắt buộc!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Nội dung:(*)</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" formControlName="content">
+        <div class="text-danger mt-2" *ngIf="content.hasError('required') && content.touched">
+          Trường này là bắt buộc!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label">Giá:(*)</label>
+      <div class="col-sm-8">
+        <input type="number" class="form-control" formControlName="cost">
+        <div class="text-danger mt-2" *ngIf="cost.hasError('required') && cost.touched">
+          Trường này là bắt buộc!
+        </div>
+        <div class="text-danger mt-2" *ngIf="cost.hasError('min') && cost.touched">
+          Giá thấp nhất là 100.000.000 vnd!
+        </div>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <label class="col-sm-4 col-form-label"></label>
+      <div class="col-sm-8 d-flex justify-content-end ">
+        <input type="submit" class="btn btn-primary" value="Đăng tin" [disabled]="postCreateForm.invalid"
+          data-toggle="modal" data-target="#newPostDialog">
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Detail -->
+<div class="modal fade" id="newPostDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-labelledby="newPostDialogLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info" id="newPostDialogLabel">New post</h5>
+      </div>
+      <div class="modal-body">
+        <table *ngIf="post" class="table table-borderless table-striped">
+          <tbody>
+            <tr>
+              <td class="font-italic">Danh mục:</td>
+              <td>{{post.category}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Vùng miền:</td>
+              <td>{{post.province}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Bạn là:</td>
+              <td>{{post.org}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Bạn đăng tin:</td>
+              <td>{{post.postType}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Tình trạng:</td>
+              <td>{{post.productStatus}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Địa chỉ:</td>
+              <td>{{post.address}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Diện tích:</td>
+              <td>{{post.area}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Hướng:</td>
+              <td>{{post.productDirection}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Tựa đề:</td>
+              <td>{{post.title}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Giá:</td>
+              <td>{{post.cost}}</td>
+            </tr>
+            <tr>
+              <td class="font-italic">Nội dung:</td>
+              <td>{{post.content}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Quay lại</button>
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="createNewPost()">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>

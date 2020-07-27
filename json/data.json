@@ -1,0 +1,74 @@
+{
+  "posts": [
+    {
+      "address": "12323",
+      "area": 150,
+      "category": "Nhà đất",
+      "content": "1231",
+      "cost": 123123123123,
+      "org": "Cá nhân",
+      "postType": "Cần bán",
+      "productDirection": "Đông",
+      "productStatus": "Mới",
+      "province": "Đà Nẵng",
+      "title": "12313",
+      "id": 1
+    },
+    {
+      "category": "Nhà đất",
+      "province": "Đà Nẵng",
+      "org": "Cá nhân",
+      "postType": "Cần bán",
+      "productStatus": "Mới",
+      "address": "12323",
+      "area": 150,
+      "productDirection": "Đông",
+      "title": "123123123",
+      "content": "sdfsdfasdf213",
+      "cost": 123123124124,
+      "id": 2
+    },
+    {
+      "category": "Nhà đất",
+      "province": "Đà Nẵng",
+      "org": "Cá nhân",
+      "postType": "Cần bán",
+      "productStatus": "Mới",
+      "address": "Đà Nẵng",
+      "area": 250,
+      "productDirection": "Nam",
+      "title": "Nhà đẹp 2 tầng",
+      "content": "Nhà đẹp 2 tầng",
+      "cost": 1000000000,
+      "id": 3
+    },
+    {
+      "category": "Nhà đất",
+      "province": "Đà Nẵng",
+      "org": "Cá nhân",
+      "postType": "Cần bán",
+      "productStatus": "Mới",
+      "address": "Đà nẵng",
+      "area": 300,
+      "productDirection": "Bắc",
+      "title": "Nhà 3 tầng",
+      "content": "Gần chợ",
+      "cost": 2000000000,
+      "id": 4
+    },
+    {
+      "category": "Nhà đất",
+      "province": "Đà Nẵng",
+      "org": "Cá nhân",
+      "postType": "Cần bán",
+      "productStatus": "Mới",
+      "address": "234",
+      "area": 21,
+      "productDirection": "Đông",
+      "title": "234",
+      "content": "q23",
+      "cost": 123456789,
+      "id": 5
+    }
+  ]
+}
